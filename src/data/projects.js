@@ -17,7 +17,7 @@ export const PROJECTS_DATA = [
     ],
     metrics: ['50+ Components', 'Design Tokens', 'Full System'],
     tags: ['Figma', 'Design Systems', 'Auto Layout', 'Variables', 'Component Library'],
-    externalHref: null,
+    externalHref: 'https://uifabiannn.gumroad.com/l/craftbit-pro',
     coverImg: '/project-covers/craftbit.png',
     accentColor: '#2C2C3A',
   },
