@@ -28,8 +28,10 @@ function ProjectCard({ project, index }) {
           <img
             src={project.coverImg}
             alt={project.name}
-            className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
-            style={{ filter: MONO_FILTER }}
+            className="w-full h-full object-cover group-hover:scale-[1.04] transition-all duration-700 ease-out"
+            style={{ filter: MONO_FILTER, transition: 'transform 700ms ease-out, filter 600ms ease-out' }}
+            onMouseEnter={(e) => { e.currentTarget.style.filter = 'none'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.filter = MONO_FILTER; }}
             onError={(e) => {
               e.currentTarget.style.display = 'none';
               e.currentTarget.parentElement.style.backgroundColor = project.accentColor;

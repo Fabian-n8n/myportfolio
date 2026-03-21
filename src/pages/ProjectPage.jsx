@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { PROJECTS_DATA } from '../data/projects';
 
-const MONO_FILTER = 'grayscale(1) sepia(0.08) brightness(0.96) contrast(1.02)';
 
 function fadeInUp(delay = 0) {
   return {
@@ -80,7 +79,6 @@ export default function ProjectPage() {
               src={project.coverImg}
               alt={project.name}
               className="w-full h-full object-cover"
-              style={{ filter: MONO_FILTER }}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
                 e.currentTarget.parentElement.style.backgroundColor = project.accentColor;
