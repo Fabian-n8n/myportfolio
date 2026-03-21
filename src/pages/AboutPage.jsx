@@ -316,10 +316,6 @@ export default function AboutPage() {
                 className="bg-ink text-cream px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink/75 transition-colors cursor-pointer">
                 Get in Touch
               </button>
-              <a href="https://linkedin.com/in/fabian-wong/" target="_blank" rel="noopener noreferrer"
-                className="border border-ink/25 text-ink px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:border-ink transition-colors">
-                LinkedIn →
-              </a>
             </div>
           </motion.div>
 

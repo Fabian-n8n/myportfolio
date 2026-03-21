@@ -89,53 +89,53 @@ export default function Hero() {
         {/* ── Content ─────────────────────────────────── */}
         <div className="absolute inset-0 z-20 flex flex-col justify-end pb-12 px-10">
 
-          {/* Role tag — mount + scroll fade */}
+          {/* Name label — small, mounts first */}
           <motion.div
             className="mb-5"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             style={{ opacity: uiOpacity, y: uiY }}
           >
             <div className="flex items-center gap-3">
               <div className="w-6 h-px bg-ink/40" />
-              <span className="text-[11px] tracking-[0.28em] uppercase text-ink/60 font-medium">
-                Product Designer · PM · AI Engineer
+              <span className="text-[11px] tracking-[0.28em] uppercase text-ink/55 font-medium">
+                Fabian Wong · Singapore
               </span>
             </div>
           </motion.div>
 
-          {/* ── Name: mount-in immediately, scroll-out per letter ── */}
+          {/* ── Role: the dominant headline, per-letter animated ── */}
           <h1
-            aria-label="FABIAN WONG"
+            aria-label="Product Designer PM AI Engineer"
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
               fontWeight: 800,
-              fontSize: 'clamp(68px, 12.5vw, 185px)',
+              fontSize: 'clamp(44px, 8vw, 112px)',
               letterSpacing: '-0.04em',
               lineHeight: 0.88,
               marginBottom: '1.75rem',
             }}
           >
-            {/* FABIAN — letters 0-5 */}
+            {/* PRODUCT DESIGNER */}
             <span style={{ display: 'block' }}>
-              {'FABIAN'.split('').map((ch, i) => (
+              {'PRODUCT DESIGNER'.split('').map((ch, i) => (
                 <AnimLetter
                   key={i} ch={ch}
-                  mountDelay={0.28 + i * 0.042}
+                  mountDelay={0.28 + i * 0.032}
                   scrollYProgress={scrollYProgress}
-                  scrollStart={0.07 + i * 0.016}
+                  scrollStart={0.07 + i * 0.013}
                 />
               ))}
             </span>
-            {/* WONG — offset so they follow FABIAN */}
+            {/* PM × AI ENGINEER */}
             <span style={{ display: 'block' }}>
-              {'WONG'.split('').map((ch, i) => (
+              {'PM \u00D7 AI ENGINEER'.split('').map((ch, i) => (
                 <AnimLetter
                   key={i} ch={ch}
-                  mountDelay={0.52 + i * 0.042}
+                  mountDelay={0.56 + i * 0.032}
                   scrollYProgress={scrollYProgress}
-                  scrollStart={0.13 + i * 0.016}
+                  scrollStart={0.14 + i * 0.013}
                 />
               ))}
             </span>
@@ -146,11 +146,11 @@ export default function Hero() {
             className="flex items-center justify-between"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
             style={{ opacity: uiOpacity, y: uiY }}
           >
             <div className="flex items-center gap-7">
-              {['Singapore', '2026', 'Open to Opportunities'].map((t) => (
+              {['Building 0→1 products', 'AI-powered workflows', 'Open to Opportunities'].map((t) => (
                 <span key={t} className="text-[10px] tracking-[0.25em] uppercase text-ink/45 font-medium">{t}</span>
               ))}
             </div>
@@ -182,7 +182,7 @@ export default function Hero() {
           transition={{ delay: 1.2, duration: 1 }}
           style={{ opacity: uiOpacity }}
         >
-          {['0 → 1 SAAS BUILDER', 'AI WORKFLOW ENGINEER', 'DESIGN × PRODUCT × CODE'].map((t) => (
+          {['KELICK · $10K MRR', 'NODEMATION · AI AGENCY', 'DESIGN × PRODUCT × CODE'].map((t) => (
             <span key={t} className="text-[9px] tracking-[0.28em] uppercase text-ink/30 font-medium">{t}</span>
           ))}
         </motion.div>

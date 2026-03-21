@@ -68,8 +68,10 @@ export default function Navbar() {
         </Link>
 
         <button
-          onClick={() => scrollToSection('contact')}
-          className="text-[11px] tracking-[0.22em] uppercase text-ink font-medium opacity-50 hover:opacity-100 transition-opacity"
+          data-cal-link="fabian-wong/quick-chat"
+          data-cal-namespace="quick-chat"
+          data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+          className="text-[11px] tracking-[0.22em] uppercase text-ink font-medium opacity-50 hover:opacity-100 transition-opacity cursor-pointer"
         >
           Contact
         </button>
