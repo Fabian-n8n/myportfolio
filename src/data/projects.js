@@ -18,7 +18,7 @@ export const PROJECTS_DATA = [
     metrics: ['50+ Components', 'Design Tokens', 'Full System'],
     tags: ['Figma', 'Design Systems', 'Auto Layout', 'Variables', 'Component Library'],
     externalHref: null,
-    coverImg: null,
+    coverImg: '/project-covers/craftbit.png',
     accentColor: '#2C2C3A',
   },
   {
@@ -40,7 +40,7 @@ export const PROJECTS_DATA = [
     metrics: ['Dashboard UI', 'Dark Mode', 'Data Viz'],
     tags: ['Figma', 'UI Design', 'Data Visualisation', 'Dark Mode', 'Cybersecurity'],
     externalHref: null,
-    coverImg: null,
+    coverImg: '/project-covers/uppsala.png',
     accentColor: '#0F2137',
   },
   {
@@ -63,7 +63,7 @@ export const PROJECTS_DATA = [
     metrics: ['300+ Homes/yr', '6 Collections', 'Smart Home Ready'],
     tags: ['React', 'Tailwind CSS', 'Framer Motion', 'Retell AI', 'Vite', 'Vercel'],
     externalHref: 'https://velaura-web.vercel.app/',
-    coverImg: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&h=800&q=85',
+    coverImg: '/project-covers/velaura.png',
     accentColor: '#070612',
   },
 ];
