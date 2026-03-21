@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const SKILLS = [
   { label: 'Product Design', sub: 'Figma · Design Systems · UX Research' },
   { label: 'Product Management', sub: 'Sprint Planning · PRDs · Roadmaps' },
-  { label: 'Nodemation / AI Automation', sub: 'n8n · LLM · Prompt Engineering' },
+  { label: 'AI Automation', sub: 'n8n · LLM · Prompt Engineering' },
   { label: 'Voice AI', sub: 'Retell AI · Agent Design · Deployment' },
   { label: 'Frontend', sub: 'React · Shadcn/ui · Tailwind CSS' },
   { label: 'Infrastructure', sub: 'NeonDB · Railway · REST APIs · Clerk' },
@@ -47,17 +47,17 @@ function fadeInUp(delay = 0) {
 
 export default function About() {
   return (
-    <section id="about" className="bg-cream px-10 pt-32 pb-24">
+    <section id="about" className="bg-cream px-6 md:px-10 pt-24 md:pt-32 pb-24">
 
-      <motion.h2 {...fadeInUp()} className="text-ink font-bold mb-20"
+      <motion.h2 {...fadeInUp()} className="text-ink font-bold mb-12 md:mb-20"
         style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(42px, 7vw, 100px)', letterSpacing: '-0.04em', lineHeight: 0.9, fontWeight: 800 }}>
         About
       </motion.h2>
 
-      <div className="grid grid-cols-12 gap-12 mb-24">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-16 md:mb-24">
 
         {/* Bio */}
-        <motion.div {...fadeInUp(0.1)} className="col-span-5">
+        <motion.div {...fadeInUp(0.1)} className="md:col-span-5">
           <p className="text-ink/75 leading-relaxed mb-5" style={{ fontSize: '17px', lineHeight: 1.8 }}>
             Product Designer and AI Automation Engineer who builds products end-to-end.
             I think in systems, not just screens — from user research and UI design to
@@ -86,42 +86,44 @@ export default function About() {
               ['Product Management Basics', 'Pendo'],
               ['Product-Led Certification', 'Pendo'],
             ].map(([title, institution]) => (
-              <div key={title} className="flex items-baseline justify-between">
+              <div key={title} className="flex items-baseline justify-between gap-4">
                 <span className="text-[13px] text-ink/75 font-medium">{title}</span>
-                <span className="text-[11px] tracking-[0.12em] text-ink/35 font-medium">{institution}</span>
+                <span className="text-[11px] tracking-[0.12em] text-ink/35 font-medium text-right flex-shrink-0">{institution}</span>
               </div>
             ))}
           </div>
         </motion.div>
 
         {/* Experience timeline */}
-        <div className="col-span-7">
+        <div className="md:col-span-7">
           {EXPERIENCE.map((exp, i) => (
             <motion.div key={exp.company} {...fadeInUp(0.1 + i * 0.09)}
-              className="grid grid-cols-12 gap-6 pb-9 mb-9 border-b border-ink/8 last:border-0 last:mb-0 last:pb-0">
-              <div className="col-span-4">
-                <p className="text-ink font-bold text-[15px] mb-0.5" style={{ letterSpacing: '-0.01em' }}>{exp.company}</p>
-                <p className="text-[11px] tracking-[0.15em] uppercase text-ink/40 font-medium">{exp.period}</p>
-              </div>
-              <div className="col-span-8">
-                <p className="text-ink/65 font-medium text-[13px] mb-2">{exp.role}</p>
-                <p className="text-ink/45 leading-relaxed text-[13px]">{exp.desc}</p>
+              className="pb-7 mb-7 border-b border-ink/8 last:border-0 last:mb-0 last:pb-0">
+              <div className="flex flex-col sm:flex-row sm:gap-6">
+                <div className="mb-1 sm:mb-0 sm:w-40 flex-shrink-0">
+                  <p className="text-ink font-bold text-[15px] mb-0.5" style={{ letterSpacing: '-0.01em' }}>{exp.company}</p>
+                  <p className="text-[11px] tracking-[0.15em] uppercase text-ink/40 font-medium">{exp.period}</p>
+                </div>
+                <div className="flex-1">
+                  <p className="text-ink/65 font-medium text-[13px] mb-1.5">{exp.role}</p>
+                  <p className="text-ink/45 leading-relaxed text-[13px]">{exp.desc}</p>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
 
-      {/* Skills with proper padding */}
+      {/* Skills */}
       <div className="w-full h-px bg-ink/10 mb-14" />
       <motion.p {...fadeInUp()} className="text-[11px] tracking-[0.28em] uppercase text-ink/35 font-medium mb-10">Key Competencies</motion.p>
-      <div className="grid grid-cols-3 gap-0 border border-ink/10 rounded-2xl overflow-hidden">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 border border-ink/10 rounded-2xl overflow-hidden">
         {SKILLS.map((skill, i) => (
           <motion.div key={skill.label} {...fadeInUp(i * 0.06)}
-            className="p-8 border-b border-r border-ink/10"
+            className="p-6 md:p-8 border-b border-ink/10"
             style={{
-              borderRight: (i + 1) % 3 === 0 ? 'none' : undefined,
-              borderBottom: i >= 3 ? 'none' : undefined,
+              borderRight: undefined,
+              borderBottom: undefined,
             }}>
             <p className="text-ink font-bold text-[15px] mb-2" style={{ letterSpacing: '-0.01em' }}>{skill.label}</p>
             <p className="text-[11px] tracking-[0.1em] text-ink/40 font-medium leading-relaxed">{skill.sub}</p>

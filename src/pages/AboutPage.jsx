@@ -284,12 +284,12 @@ export default function AboutPage() {
     <div className="bg-cream" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
 
       {/* ── Hero ────────────────────────────────────────── */}
-      <section className="px-10 pt-36 pb-28 border-b border-ink/8">
-        <div className="grid grid-cols-12 gap-8 items-center">
+      <section className="px-6 md:px-10 pt-28 md:pt-36 pb-20 md:pb-28 border-b border-ink/8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
 
           {/* Left: text */}
           <motion.div
-            className="col-span-7"
+            className="md:col-span-7"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -321,7 +321,7 @@ export default function AboutPage() {
 
           {/* Right: abstract drawing */}
           <motion.div
-            className="col-span-5 flex items-center justify-center"
+            className="hidden md:flex md:col-span-5 items-center justify-center"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
@@ -333,33 +333,29 @@ export default function AboutPage() {
       </section>
 
       {/* ── Belief system ───────────────────────────────── */}
-      <section className="px-10 pt-24 pb-24 border-b border-ink/8">
+      <section className="px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-24 border-b border-ink/8">
         <motion.p {...fadeInUp()} className="text-[11px] tracking-[0.3em] uppercase text-ink/35 font-medium mb-14">
           Belief System
         </motion.p>
         <div className="space-y-0">
           {BELIEFS.map((b, i) => (
             <motion.div key={b.num} {...fadeInUp(i * 0.1)}
-              className="grid grid-cols-12 gap-8 py-10 border-b border-ink/8 last:border-0">
-              <div className="col-span-1">
-                <span className="text-[11px] tracking-[0.2em] text-ink/25 font-medium">{b.num}</span>
-              </div>
-              <div className="col-span-5">
-                <h3 className="text-ink font-bold"
-                  style={{ fontSize: 'clamp(22px, 3vw, 38px)', letterSpacing: '-0.02em', lineHeight: 1.1, fontWeight: 700 }}>
+              className="py-8 md:py-10 border-b border-ink/8 last:border-0">
+              <div className="flex items-start gap-5 md:gap-8 mb-3">
+                <span className="flex-none text-[11px] tracking-[0.2em] text-ink/25 font-medium pt-1">{b.num}</span>
+                <h3 className="text-ink font-bold flex-1"
+                  style={{ fontSize: 'clamp(20px, 3vw, 38px)', letterSpacing: '-0.02em', lineHeight: 1.1, fontWeight: 700 }}>
                   {b.headline}
                 </h3>
               </div>
-              <div className="col-span-6">
-                <p className="text-ink/55 leading-relaxed" style={{ fontSize: '15px', lineHeight: 1.8 }}>{b.body}</p>
-              </div>
+              <p className="text-ink/55 leading-relaxed pl-9 md:pl-12" style={{ fontSize: '15px', lineHeight: 1.8 }}>{b.body}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* ── Career timeline ─────────────────────────────── */}
-      <section className="px-10 pt-24 pb-24 border-b border-ink/8">
+      <section className="px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-24 border-b border-ink/8">
         <motion.p {...fadeInUp()} className="text-[11px] tracking-[0.3em] uppercase text-ink/35 font-medium mb-14">
           Career Journey
         </motion.p>
@@ -410,7 +406,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Tools ───────────────────────────────────────── */}
-      <section className="px-10 pt-24 pb-24 border-b border-ink/8">
+      <section className="px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-24 border-b border-ink/8">
         <motion.p {...fadeInUp()} className="text-[11px] tracking-[0.3em] uppercase text-ink/35 font-medium mb-5">Daily Tools</motion.p>
         <motion.h2 {...fadeInUp(0.08)} className="text-ink font-bold mb-14"
           style={{ fontSize: 'clamp(28px, 4.5vw, 60px)', letterSpacing: '-0.03em', lineHeight: 0.95, fontWeight: 800 }}>
@@ -446,12 +442,12 @@ export default function AboutPage() {
       </section>
 
       {/* ── Credentials (certs + education unified) ─────── */}
-      <section className="px-10 pt-24 pb-24 border-b border-ink/8">
+      <section className="px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-24 border-b border-ink/8">
         <motion.p {...fadeInUp()} className="text-[11px] tracking-[0.3em] uppercase text-ink/35 font-medium mb-6">
           Credentials
         </motion.p>
 
-        <div className="grid grid-cols-5 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
           {CREDENTIALS.map((item, i) => (
             <motion.div key={item.title} {...fadeInUp(i * 0.07)}>
               <div className="h-full border border-ink/10 rounded-2xl p-6 hover:border-ink/25 hover:bg-ink/[0.02] transition-all duration-200">
@@ -463,7 +459,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Footer CTA ──────────────────────────────────── */}
-      <section className="px-10 pt-20 pb-20 flex items-center justify-between">
+      <section className="px-6 md:px-10 pt-14 md:pt-20 pb-14 md:pb-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
         <motion.div {...fadeInUp()}>
           <p className="text-ink font-bold text-[22px] mb-1" style={{ letterSpacing: '-0.02em' }}>Let's build something.</p>
           <p className="text-ink/40 text-[13px]">Open to PM, Product Design, and AI Engineering roles.</p>

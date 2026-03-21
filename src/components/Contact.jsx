@@ -18,7 +18,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden px-10 pt-32 pb-24"
+      className="relative overflow-hidden px-6 md:px-10 pt-24 md:pt-32 pb-24"
       style={{ background: '#16120E' }}
     >
       {/* Large background text */}
@@ -80,7 +80,7 @@ export default function Contact() {
           </a>
         </motion.div>
 
-        <motion.div {...fadeInUp(0.3)} className="flex items-end justify-between border-t border-cream/10 pt-8">
+        <motion.div {...fadeInUp(0.3)} className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-t border-cream/10 pt-8">
           <span className="text-cream font-bold text-[14px]" style={{ letterSpacing: '-0.01em', fontWeight: 700 }}>FW</span>
           <div className="flex items-center gap-8">
             {LINKS.map((link) => (

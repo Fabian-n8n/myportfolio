@@ -18,7 +18,7 @@ export const PROJECTS_DATA = [
     metrics: ['50+ Components', 'Design Tokens', 'Full System'],
     tags: ['Figma', 'Design Systems', 'Auto Layout', 'Variables', 'Component Library'],
     externalHref: null,
-    coverImg: '/project-covers/craftbit.png',
+    coverImg: null,
     accentColor: '#2C2C3A',
   },
   {
@@ -40,7 +40,7 @@ export const PROJECTS_DATA = [
     metrics: ['Dashboard UI', 'Dark Mode', 'Data Viz'],
     tags: ['Figma', 'UI Design', 'Data Visualisation', 'Dark Mode', 'Cybersecurity'],
     externalHref: null,
-    coverImg: '/project-covers/uppsala.png',
+    coverImg: null,
     accentColor: '#0F2137',
   },
   {

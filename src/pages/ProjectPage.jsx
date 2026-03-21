@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { PROJECTS_DATA } from '../data/projects';
 
+const MONO_FILTER = 'grayscale(1) sepia(0.08) brightness(0.96) contrast(1.02)';
+
 function fadeInUp(delay = 0) {
   return {
     initial: { opacity: 0, y: 28 },
@@ -23,7 +25,7 @@ export default function ProjectPage() {
     <div className="bg-cream" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
 
       {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="px-10 pt-36 pb-0 border-b border-ink/8">
+      <section className="px-6 md:px-10 pt-28 md:pt-36 pb-0 border-b border-ink/8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -37,27 +39,27 @@ export default function ProjectPage() {
             <span className="text-[11px] tracking-[0.28em] uppercase text-ink/60 font-medium">{project.name}</span>
           </div>
 
-          <div className="grid grid-cols-12 gap-8 items-end mb-0">
-            <div className="col-span-8 pb-16">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end mb-0">
+            <div className="md:col-span-8 pb-10 md:pb-16">
               <p className="text-[11px] tracking-[0.28em] uppercase text-ink/35 font-medium mb-4 flex items-center gap-3">
                 <span>{project.num}</span>
                 <span className="text-ink/15">/</span>
                 <span>{project.type}</span>
               </p>
               <h1 className="text-ink font-bold mb-6"
-                style={{ fontSize: 'clamp(52px, 9vw, 130px)', letterSpacing: '-0.04em', lineHeight: 0.88, fontWeight: 800 }}>
+                style={{ fontSize: 'clamp(42px, 9vw, 130px)', letterSpacing: '-0.04em', lineHeight: 0.88, fontWeight: 800 }}>
                 {project.name}
               </h1>
               <p className="text-ink/45 text-[15px] mb-10" style={{ letterSpacing: '0.02em' }}>{project.year}</p>
-              <p className="text-ink/65 text-[18px] leading-relaxed max-w-xl" style={{ lineHeight: 1.75 }}>
+              <p className="text-ink/65 text-[16px] md:text-[18px] leading-relaxed max-w-xl" style={{ lineHeight: 1.75 }}>
                 {project.tagline}
               </p>
             </div>
-            <div className="col-span-4 pb-16">
+            <div className="md:col-span-4 pb-10 md:pb-16">
               <div className="space-y-4">
                 {project.metrics.map((m) => (
                   <div key={m} className="border-t border-ink/10 pt-4">
-                    <p className="text-ink font-bold text-[18px]" style={{ letterSpacing: '-0.01em' }}>{m}</p>
+                    <p className="text-ink font-bold text-[16px] md:text-[18px]" style={{ letterSpacing: '-0.01em' }}>{m}</p>
                   </div>
                 ))}
               </div>
@@ -74,7 +76,16 @@ export default function ProjectPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
-            <img src={project.coverImg} alt={project.name} className="w-full h-full object-cover" />
+            <img
+              src={project.coverImg}
+              alt={project.name}
+              className="w-full h-full object-cover"
+              style={{ filter: MONO_FILTER }}
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.parentElement.style.backgroundColor = project.accentColor;
+              }}
+            />
           </motion.div>
         ) : (
           <motion.div
@@ -85,7 +96,7 @@ export default function ProjectPage() {
             transition={{ duration: 0.9, delay: 0.3 }}
           >
             <span className="font-bold text-cream/10"
-              style={{ fontSize: 'clamp(80px, 20vw, 240px)', fontWeight: 800, letterSpacing: '-0.05em' }}>
+              style={{ fontSize: 'clamp(60px, 20vw, 240px)', fontWeight: 800, letterSpacing: '-0.05em' }}>
               {project.num}
             </span>
           </motion.div>
@@ -93,15 +104,15 @@ export default function ProjectPage() {
       </section>
 
       {/* ── Overview ─────────────────────────────────────── */}
-      <section className="px-10 pt-24 pb-24 border-b border-ink/8">
-        <div className="grid grid-cols-12 gap-8">
-          <motion.div {...fadeInUp()} className="col-span-7">
+      <section className="px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-24 border-b border-ink/8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          <motion.div {...fadeInUp()} className="md:col-span-7">
             <p className="text-[11px] tracking-[0.3em] uppercase text-ink/35 font-medium mb-8">Overview</p>
             <p className="text-ink/70 leading-relaxed" style={{ fontSize: '17px', lineHeight: 1.85 }}>
               {project.description}
             </p>
           </motion.div>
-          <motion.div {...fadeInUp(0.1)} className="col-span-5 pl-8">
+          <motion.div {...fadeInUp(0.1)} className="md:col-span-5 md:pl-8">
             <p className="text-[11px] tracking-[0.3em] uppercase text-ink/35 font-medium mb-8">Stack</p>
             <div className="flex flex-wrap gap-2">
               {project.tags.map((t) => (
@@ -115,25 +126,25 @@ export default function ProjectPage() {
       </section>
 
       {/* ── Key Contributions ─────────────────────────────── */}
-      <section className="px-10 pt-24 pb-24 border-b border-ink/8">
+      <section className="px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-24 border-b border-ink/8">
         <motion.p {...fadeInUp()} className="text-[11px] tracking-[0.3em] uppercase text-ink/35 font-medium mb-14">
           Key Contributions
         </motion.p>
         <div className="space-y-0">
           {project.contributions.map((item, i) => (
             <motion.div key={i} {...fadeInUp(i * 0.07)}
-              className="flex items-start gap-8 py-7 border-b border-ink/8 last:border-0">
+              className="flex items-start gap-5 md:gap-8 py-6 md:py-7 border-b border-ink/8 last:border-0">
               <span className="flex-none text-[11px] tracking-[0.2em] uppercase text-ink/20 font-medium pt-0.5">
                 {String(i + 1).padStart(2, '0')}
               </span>
-              <p className="text-ink/70 text-[15px] leading-relaxed flex-1" style={{ lineHeight: 1.8 }}>{item}</p>
+              <p className="text-ink/70 text-[14px] md:text-[15px] leading-relaxed flex-1" style={{ lineHeight: 1.8 }}>{item}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* ── CTA ───────────────────────────────────────────── */}
-      <section className="px-10 pt-20 pb-20 flex items-center justify-between">
+      <section className="px-6 md:px-10 pt-16 md:pt-20 pb-16 md:pb-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
         <motion.div {...fadeInUp()}>
           {project.externalHref ? (
             <a href={project.externalHref} target="_blank" rel="noopener noreferrer"
@@ -148,7 +159,7 @@ export default function ProjectPage() {
         </motion.div>
 
         {/* Next project */}
-        <motion.div {...fadeInUp(0.1)} className="text-right">
+        <motion.div {...fadeInUp(0.1)} className="sm:text-right">
           <p className="text-[10px] tracking-[0.25em] uppercase text-ink/30 font-medium mb-1">Next Project</p>
           <Link to={`/work/${nextProject.slug}`}
             className="text-ink font-bold hover:opacity-60 transition-opacity"

@@ -87,7 +87,7 @@ export default function Hero() {
         }} />
 
         {/* ── Content ─────────────────────────────────── */}
-        <div className="absolute inset-0 z-20 flex flex-col justify-end pb-12 px-10">
+        <div className="absolute inset-0 z-20 flex flex-col justify-end pb-8 md:pb-12 px-6 md:px-10">
 
           {/* Name label — small, mounts first */}
           <motion.div
@@ -143,18 +143,18 @@ export default function Hero() {
 
           {/* Bottom row — mount + scroll fade together */}
           <motion.div
-            className="flex items-center justify-between"
+            className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-0"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
             style={{ opacity: uiOpacity, y: uiY }}
           >
-            <div className="flex items-center gap-7">
+            <div className="hidden sm:flex items-center gap-7">
               {['Building 0→1 products', 'AI-powered workflows', 'Open to Opportunities'].map((t) => (
                 <span key={t} className="text-[10px] tracking-[0.25em] uppercase text-ink/45 font-medium">{t}</span>
               ))}
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <button
                 data-cal-link="fabian-wong/quick-chat"
                 data-cal-namespace="quick-chat"
@@ -176,7 +176,7 @@ export default function Hero() {
 
         {/* ── Right editorial annotations ─────────────── */}
         <motion.div
-          className="absolute right-8 top-1/2 -translate-y-1/2 z-20 flex flex-col items-end gap-2"
+          className="hidden md:flex absolute right-8 top-1/2 -translate-y-1/2 z-20 flex-col items-end gap-2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 1 }}

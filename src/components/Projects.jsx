@@ -11,6 +11,8 @@ function fadeInUp(delay = 0) {
   };
 }
 
+const MONO_FILTER = 'grayscale(1) sepia(0.08) brightness(0.96) contrast(1.02)';
+
 function ProjectCard({ project, index }) {
   const navigate = useNavigate();
 
@@ -26,7 +28,12 @@ function ProjectCard({ project, index }) {
           <img
             src={project.coverImg}
             alt={project.name}
-            className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-700 ease-out"
+            className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
+            style={{ filter: MONO_FILTER }}
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+              e.currentTarget.parentElement.style.backgroundColor = project.accentColor;
+            }}
           />
         ) : (
           <motion.div
@@ -88,9 +95,7 @@ function ProjectCard({ project, index }) {
           <span className="text-[10px] tracking-[0.22em] uppercase font-semibold text-ink/70 group-hover:text-ink transition-colors">
             View Case Study
           </span>
-          <span className="text-ink/30 group-hover:translate-x-1 group-hover:text-ink/60 transition-all duration-300 text-xs">
-            →
-          </span>
+          <span className="text-ink/30 group-hover:translate-x-1 group-hover:text-ink/60 transition-all duration-300 text-xs">→</span>
         </div>
       </div>
     </motion.div>
@@ -99,8 +104,8 @@ function ProjectCard({ project, index }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-cream px-10 pt-32 pb-24">
-      <motion.div {...fadeInUp()} className="flex items-end justify-between mb-16">
+    <section id="projects" className="bg-cream px-6 md:px-10 pt-24 md:pt-32 pb-24">
+      <motion.div {...fadeInUp()} className="flex items-end justify-between mb-12 md:mb-16">
         <h2
           className="text-ink font-bold"
           style={{
@@ -113,12 +118,12 @@ export default function Projects() {
         >
           Case<br />Studies
         </h2>
-        <motion.p {...fadeInUp(0.1)} className="text-[11px] tracking-[0.25em] uppercase text-ink/35 font-medium pb-2">
+        <motion.p {...fadeInUp(0.1)} className="text-[11px] tracking-[0.25em] uppercase text-ink/35 font-medium pb-2 hidden sm:block">
           Selected Work
         </motion.p>
       </motion.div>
 
-      <div className="grid grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-8">
         {PROJECTS_DATA.map((p, i) => (
           <ProjectCard key={p.slug} project={p} index={i} />
         ))}
