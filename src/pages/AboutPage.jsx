@@ -310,8 +310,10 @@ export default function AboutPage() {
             </p>
             <div className="flex items-center gap-4">
               <button
-                onClick={() => { window.location.href = 'mailto:uifabiannn@gmail.com'; }}
-                className="bg-ink text-cream px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink/75 transition-colors">
+                data-cal-link="fabian-wong/quick-chat"
+                data-cal-namespace="quick-chat"
+                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                className="bg-ink text-cream px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink/75 transition-colors cursor-pointer">
                 Get in Touch
               </button>
               <a href="https://linkedin.com/in/fabian-wong/" target="_blank" rel="noopener noreferrer"
@@ -472,8 +474,10 @@ export default function AboutPage() {
         </motion.div>
         <motion.div {...fadeInUp(0.1)} className="flex items-center gap-4">
           <button
-            onClick={() => { window.location.href = 'mailto:uifabiannn@gmail.com'; }}
-            className="bg-ink text-cream px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink/75 transition-colors">
+            data-cal-link="fabian-wong/quick-chat"
+            data-cal-namespace="quick-chat"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+            className="bg-ink text-cream px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink/75 transition-colors cursor-pointer">
             Get in Touch
           </button>
           <a href="/fabian-wong-resume.pdf" download="Fabian Wong - Resume.pdf"

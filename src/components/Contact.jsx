@@ -47,10 +47,13 @@ export default function Contact() {
           based in Singapore or remote.
         </motion.p>
 
-        <motion.div {...fadeInUp(0.25)} className="mb-20">
-          <a href="mailto:uifabiannn@gmail.com"
-            className="inline-flex items-center gap-4 group"
-            onClick={(e) => { e.preventDefault(); window.location.href = 'mailto:uifabiannn@gmail.com'; }}>
+        <motion.div {...fadeInUp(0.25)} className="mb-10">
+          <button
+            data-cal-link="fabian-wong/quick-chat"
+            data-cal-namespace="quick-chat"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+            className="inline-flex items-center gap-4 group cursor-pointer bg-transparent border-0 p-0 text-left"
+          >
             <span className="text-cream font-bold underline underline-offset-4 decoration-cream/25 group-hover:decoration-cream transition-all duration-300"
               style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(22px, 3.5vw, 46px)', letterSpacing: '-0.02em', fontWeight: 700 }}>
               uifabiannn@gmail.com
@@ -59,6 +62,21 @@ export default function Contact() {
               style={{ fontSize: 'clamp(20px, 2.5vw, 36px)' }}>
               →
             </span>
+          </button>
+        </motion.div>
+
+        <motion.div {...fadeInUp(0.3)} className="mb-16 flex items-center gap-4">
+          <button
+            data-cal-link="fabian-wong/quick-chat"
+            data-cal-namespace="quick-chat"
+            data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+            className="bg-cream text-ink px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-cream/80 transition-colors cursor-pointer"
+          >
+            Book a Call
+          </button>
+          <a href="mailto:uifabiannn@gmail.com"
+            className="inline-flex items-center gap-2 border border-cream/25 text-cream/70 px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:border-cream/50 hover:text-cream transition-colors">
+            Send Email
           </a>
         </motion.div>
 

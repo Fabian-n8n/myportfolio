@@ -156,8 +156,10 @@ export default function Hero() {
             </div>
             <div className="flex items-center gap-3">
               <button
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-ink text-cream px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink/75 transition-colors"
+                data-cal-link="fabian-wong/quick-chat"
+                data-cal-namespace="quick-chat"
+                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                className="bg-ink text-cream px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink/75 transition-colors cursor-pointer"
               >
                 Let's Talk
               </button>
