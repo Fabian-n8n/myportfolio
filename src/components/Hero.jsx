@@ -156,17 +156,18 @@ export default function Hero() {
             </div>
             <div className="flex items-center gap-3">
               <button
-                onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-ink text-cream px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink/75 transition-colors"
-              >
-                View Work
-              </button>
-              <button
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="border border-ink/30 text-ink px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:border-ink transition-colors"
+                className="bg-ink text-cream px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink/75 transition-colors"
               >
                 Let's Talk
               </button>
+              <a
+                href="/fabian-wong-resume.pdf"
+                download="Fabian Wong - Resume.pdf"
+                className="border border-ink/30 text-ink px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:border-ink transition-colors"
+              >
+                Download CV
+              </a>
             </div>
           </motion.div>
         </div>

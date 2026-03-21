@@ -234,7 +234,7 @@ const TOOLS = [
   { name: 'Twilio',     url: 'https://www.vectorlogo.zone/logos/twilio/twilio-icon.svg', filter: true },
   { name: 'Claude',     url: 'https://cdn.simpleicons.org/anthropic/16120E' },
   { name: 'NeonDB',     url: 'https://avatars.githubusercontent.com/u/77690634?s=80&v=4', filter: true },
-  { name: 'Retell AI',  url: null, initials: 'RA' },
+  { name: 'Retell AI',  url: '/retell-logo.svg' },
   { name: 'OpenRouter', url: 'https://cdn.simpleicons.org/openrouter/16120E' },
 ];
 
@@ -367,16 +367,17 @@ export default function AboutPage() {
         <div className="relative">
           {/* Static faint guide line */}
           <div className="absolute top-0 bottom-0 w-px bg-ink/8" style={{ left: '104px' }} />
-          {/* Animated draw-down line — loops */}
+          {/* Animated draw-down line — slow, obvious loop */}
           <motion.div
-            className="absolute top-0 bottom-0 w-px"
+            className="absolute top-0 bottom-0"
             style={{
               left: '104px',
+              width: '2px',
               transformOrigin: 'top center',
-              background: 'linear-gradient(to bottom, rgba(22,18,14,0.55), rgba(22,18,14,0.06))',
+              background: 'linear-gradient(to bottom, rgba(22,18,14,0.85), rgba(22,18,14,0.1))',
             }}
             animate={{ scaleY: [0, 1] }}
-            transition={{ duration: 3, repeat: Infinity, repeatDelay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 5, repeat: Infinity, repeatDelay: 0.8, ease: 'easeInOut' }}
           />
 
           {TIMELINE.map((item, i) => (
@@ -454,16 +455,9 @@ export default function AboutPage() {
         <div className="grid grid-cols-5 gap-2">
           {CREDENTIALS.map((item, i) => (
             <motion.div key={item.title} {...fadeInUp(i * 0.07)}>
-              {item.href ? (
-                <a href={item.href} target="_blank" rel="noopener noreferrer"
-                  className="block h-full border border-ink/10 rounded-2xl p-6 hover:border-ink/25 hover:bg-ink/[0.02] transition-all duration-200">
-                  <CredentialCard item={item} />
-                </a>
-              ) : (
-                <div className="h-full border border-ink/10 rounded-2xl p-6 hover:border-ink/25 hover:bg-ink/[0.02] transition-all duration-200">
-                  <CredentialCard item={item} />
-                </div>
-              )}
+              <div className="h-full border border-ink/10 rounded-2xl p-6 hover:border-ink/25 hover:bg-ink/[0.02] transition-all duration-200">
+                <CredentialCard item={item} />
+              </div>
             </motion.div>
           ))}
         </div>
@@ -480,10 +474,10 @@ export default function AboutPage() {
             className="bg-ink text-cream px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink/75 transition-colors">
             Get in Touch
           </a>
-          <Link to="/"
+          <a href="/fabian-wong-resume.pdf" download="Fabian Wong - Resume.pdf"
             className="border border-ink/25 text-ink px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:border-ink transition-colors">
-            View Work
-          </Link>
+            Download Resume
+          </a>
         </motion.div>
       </section>
 
