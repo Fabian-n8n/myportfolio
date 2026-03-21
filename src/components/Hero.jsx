@@ -165,7 +165,7 @@ export default function Hero() {
               </button>
               <a
                 href="/fabian-wong-resume.pdf"
-                download="Fabian Wong - Resume.pdf"
+                download="Fabian Wong - Resume - PD updated.pdf"
                 className="inline-flex items-center gap-2 border border-ink/30 text-ink px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:border-ink transition-colors"
               >
                 Download CV <span className="text-ink/50 text-[11px]">↓</span>

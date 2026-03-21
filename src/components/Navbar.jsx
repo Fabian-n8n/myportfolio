@@ -84,7 +84,7 @@ export default function Navbar() {
           </button>
           <a
             href="/fabian-wong-resume.pdf"
-            download="Fabian Wong - Resume.pdf"
+            download="Fabian Wong - Resume - PD updated.pdf"
             className="flex items-center gap-2 rounded-full border border-ink/20 px-4 py-2 hover:bg-ink hover:text-cream hover:border-ink transition-all duration-300 group"
           >
             <span className="text-[10px] tracking-[0.22em] uppercase font-semibold text-ink group-hover:text-cream">
@@ -168,7 +168,7 @@ export default function Navbar() {
             >
               <a
                 href="/fabian-wong-resume.pdf"
-                download="Fabian Wong - Resume.pdf"
+                download="Fabian Wong - Resume - PD updated.pdf"
                 className="inline-flex items-center gap-2 border border-ink/25 text-ink px-6 py-3 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink hover:text-cream hover:border-ink transition-all"
               >
                 Download CV <span>↓</span>
