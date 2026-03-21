@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const SKILLS = [
   { label: 'Product Design', sub: 'Figma · Design Systems · UX Research' },
   { label: 'Product Management', sub: 'Sprint Planning · PRDs · Roadmaps' },
-  { label: 'AI Automation', sub: 'n8n · LLM · Prompt Engineering' },
+  { label: 'Nodemation / AI Automation', sub: 'n8n · LLM · Prompt Engineering' },
   { label: 'Voice AI', sub: 'Retell AI · Agent Design · Deployment' },
   { label: 'Frontend', sub: 'React · Shadcn/ui · Tailwind CSS' },
   { label: 'Infrastructure', sub: 'NeonDB · Railway · REST APIs · Clerk' },
@@ -11,10 +11,10 @@ const SKILLS = [
 
 const EXPERIENCE = [
   {
-    company: 'AI Automation',
-    role: 'Freelance AI Engineer',
+    company: 'Nodemation',
+    role: 'Founder & AI Engineer',
     period: 'Oct 2025 — Now',
-    desc: 'Building n8n workflows, LLM integrations, voice AI agents, and automation systems for Singapore SMEs. Content at @fabian.n8n.',
+    desc: 'Founded Nodemation — Singapore-registered AI automation agency. Builds n8n workflows, LLM integrations, and voice AI agents for SMEs. Content at @fabian.n8n.',
   },
   {
     company: 'Kelick',
@@ -38,10 +38,10 @@ const EXPERIENCE = [
 
 function fadeInUp(delay = 0) {
   return {
-    initial: { opacity: 0, y: 30 },
+    initial: { opacity: 0, y: 28 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: '-60px' },
-    transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] },
+    viewport: { once: true, amount: 0.05 },
+    transition: { duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] },
   };
 }
 
@@ -83,6 +83,8 @@ export default function About() {
               ['B. Business Marketing', 'SIM University · RMIT'],
               ['Certified ScrumMaster®', 'Scrum Alliance'],
               ['UX Design Certificate', 'Vertical Institute'],
+              ['Product Management Basics', 'Pendo'],
+              ['Product-Led Certification', 'Pendo'],
             ].map(([title, institution]) => (
               <div key={title} className="flex items-baseline justify-between">
                 <span className="text-[13px] text-ink/75 font-medium">{title}</span>

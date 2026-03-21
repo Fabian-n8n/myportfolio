@@ -164,9 +164,9 @@ export default function Hero() {
               <a
                 href="/fabian-wong-resume.pdf"
                 download="Fabian Wong - Resume.pdf"
-                className="border border-ink/30 text-ink px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:border-ink transition-colors"
+                className="inline-flex items-center gap-2 border border-ink/30 text-ink px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:border-ink transition-colors"
               >
-                Download CV
+                Download CV <span className="text-ink/50 text-[11px]">↓</span>
               </a>
             </div>
           </motion.div>

@@ -3,9 +3,11 @@ import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Work from './components/Work';
+import Projects from './components/Projects';
 import About from './components/About';
 import Contact from './components/Contact';
 import AboutPage from './pages/AboutPage';
+import ProjectPage from './pages/ProjectPage';
 
 /* Scroll to top on every route change */
 function ScrollToTop() {
@@ -21,6 +23,7 @@ function HomePage() {
     <>
       <Hero />
       <Work />
+      <Projects />
       <About />
       <Contact />
     </>
@@ -36,6 +39,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/work/:slug" element={<ProjectPage />} />
         </Routes>
       </main>
     </BrowserRouter>

@@ -27,15 +27,15 @@ const PROJECTS = [
   },
   {
     num: '03',
-    name: 'AI Automation',
-    type: 'AI Engineering · Freelance',
+    name: 'Nodemation',
+    type: 'AI Engineering · Agency',
     year: 'Oct 2025 — Now',
     description:
-      'Builds n8n automation workflows, LLM integrations, and voice AI agents for Singapore SMEs. Active content creator at @fabian.n8n sharing AI build tutorials.',
+      'Founded Nodemation — a Singapore-registered AI automation agency. We Automate What\'s Stealing Your Time. Builds n8n workflows, LLM integrations, and voice AI agents for SMEs.',
     metrics: ['n8n Workflows', 'LLM Integrations', 'Voice AI Agents'],
-    tags: ['n8n', 'OpenRouter', 'Claude', 'Airtable', 'Twilio', 'Retell AI'],
-    status: '@fabian.n8n →',
-    href: 'https://www.tiktok.com/@fabian.n8n',
+    tags: ['n8n', 'Claude', 'Retell AI', 'Airtable', 'Twilio', 'OpenRouter'],
+    status: 'nodemation.pro →',
+    href: 'https://www.nodemation.pro',
   },
 ];
 
@@ -108,7 +108,6 @@ export default function Work() {
             style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(42px, 7vw, 100px)', letterSpacing: '-0.04em', lineHeight: 0.9, fontWeight: 800 }}>
             Work<br />Experience
           </h2>
-          <p className="text-[11px] tracking-[0.25em] uppercase text-ink/35 font-medium pb-2">3 Projects</p>
         </div>
       </motion.div>
 

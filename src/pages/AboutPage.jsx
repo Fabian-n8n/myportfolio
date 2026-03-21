@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 function fadeInUp(delay = 0) {
   return {
-    initial: { opacity: 0, y: 32 },
+    initial: { opacity: 0, y: 28 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: '-50px' },
+    viewport: { once: true, amount: 0.05 },
     transition: { duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] },
   };
 }
@@ -215,9 +215,9 @@ const TIMELINE = [
   },
   {
     year: '2025+',
-    era: 'AI Engineer',
-    desc: 'Deep focus on AI automation: n8n workflows, LLM integrations, voice AI agents. Building systems that make SMEs run 10× leaner. Growing @fabian.n8n.',
-    tag: 'n8n · LLM · Voice AI',
+    era: 'Founder & AI Engineer',
+    desc: 'Founded Nodemation — a Singapore-registered AI automation agency. Builds n8n workflows, LLM integrations, and voice AI agents that make SMEs run leaner. Growing @fabian.n8n.',
+    tag: 'Nodemation · n8n · Voice AI',
   },
 ];
 
@@ -309,10 +309,11 @@ export default function AboutPage() {
               systems that make them run.
             </p>
             <div className="flex items-center gap-4">
-              <a href="mailto:uifabiannn@gmail.com"
+              <button
+                onClick={() => { window.location.href = 'mailto:uifabiannn@gmail.com'; }}
                 className="bg-ink text-cream px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink/75 transition-colors">
                 Get in Touch
-              </a>
+              </button>
               <a href="https://linkedin.com/in/fabian-wong/" target="_blank" rel="noopener noreferrer"
                 className="border border-ink/25 text-ink px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:border-ink transition-colors">
                 LinkedIn →
@@ -470,13 +471,14 @@ export default function AboutPage() {
           <p className="text-ink/40 text-[13px]">Open to PM, Product Design, and AI Engineering roles.</p>
         </motion.div>
         <motion.div {...fadeInUp(0.1)} className="flex items-center gap-4">
-          <a href="mailto:uifabiannn@gmail.com"
+          <button
+            onClick={() => { window.location.href = 'mailto:uifabiannn@gmail.com'; }}
             className="bg-ink text-cream px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink/75 transition-colors">
             Get in Touch
-          </a>
+          </button>
           <a href="/fabian-wong-resume.pdf" download="Fabian Wong - Resume.pdf"
-            className="border border-ink/25 text-ink px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:border-ink transition-colors">
-            Download Resume
+            className="inline-flex items-center gap-2 border border-ink/25 text-ink px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:border-ink transition-colors">
+            Download CV <span className="text-ink/50 text-[11px]">↓</span>
           </a>
         </motion.div>
       </section>

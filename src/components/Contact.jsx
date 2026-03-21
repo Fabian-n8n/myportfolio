@@ -7,9 +7,9 @@ const LINKS = [
 
 function fadeInUp(delay = 0) {
   return {
-    initial: { opacity: 0, y: 30 },
+    initial: { opacity: 0, y: 28 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: '-40px' },
+    viewport: { once: true, amount: 0.05 },
     transition: { duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] },
   };
 }
@@ -47,17 +47,20 @@ export default function Contact() {
           based in Singapore or remote.
         </motion.p>
 
-        <motion.a {...fadeInUp(0.25)} href="mailto:uifabiannn@gmail.com"
-          className="inline-flex items-center gap-4 group mb-20">
-          <span className="text-cream font-bold underline underline-offset-4 decoration-cream/25 group-hover:decoration-cream transition-all duration-300"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(22px, 3.5vw, 46px)', letterSpacing: '-0.02em', fontWeight: 700 }}>
-            uifabiannn@gmail.com
-          </span>
-          <span className="text-cream/40 group-hover:text-cream group-hover:translate-x-1 transition-all duration-300"
-            style={{ fontSize: 'clamp(20px, 2.5vw, 36px)' }}>
-            →
-          </span>
-        </motion.a>
+        <motion.div {...fadeInUp(0.25)} className="mb-20">
+          <a href="mailto:uifabiannn@gmail.com"
+            className="inline-flex items-center gap-4 group"
+            onClick={(e) => { e.preventDefault(); window.location.href = 'mailto:uifabiannn@gmail.com'; }}>
+            <span className="text-cream font-bold underline underline-offset-4 decoration-cream/25 group-hover:decoration-cream transition-all duration-300"
+              style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(22px, 3.5vw, 46px)', letterSpacing: '-0.02em', fontWeight: 700 }}>
+              uifabiannn@gmail.com
+            </span>
+            <span className="text-cream/40 group-hover:text-cream group-hover:translate-x-1 transition-all duration-300"
+              style={{ fontSize: 'clamp(20px, 2.5vw, 36px)' }}>
+              →
+            </span>
+          </a>
+        </motion.div>
 
         <motion.div {...fadeInUp(0.3)} className="flex items-end justify-between border-t border-cream/10 pt-8">
           <span className="text-cream font-bold text-[14px]" style={{ letterSpacing: '-0.01em', fontWeight: 700 }}>FW</span>
