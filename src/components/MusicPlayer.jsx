@@ -102,19 +102,17 @@ export default function MusicPlayer() {
   /* ── Auto-play on first user interaction ── */
   /* Listen immediately on mount — don't wait for ready */
   useEffect(() => {
-    const EVENTS = ['click', 'scroll', 'touchstart', 'keydown'];
+    const EVENTS = ['click', 'scroll', 'touchstart', 'pointerdown', 'keydown', 'mousemove'];
     const tryPlay = () => {
       if (hasAutoPlayed.current) return;
-      // Remove all listeners the moment any one fires
-      EVENTS.forEach(e => window.removeEventListener(e, tryPlay));
+      hasAutoPlayed.current = true;
       if (playerRef.current) {
-        hasAutoPlayed.current = true;
         playerRef.current.playVideo();
       } else {
-        // Player not ready yet — flag so we play the instant it is
         wantsToPlay.current = true;
       }
     };
+    // Keep all listeners alive — hasAutoPlayed guards against double-play
     EVENTS.forEach(e => window.addEventListener(e, tryPlay, { passive: true }));
     return () => EVENTS.forEach(e => window.removeEventListener(e, tryPlay));
   }, []);
