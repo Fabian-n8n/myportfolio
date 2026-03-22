@@ -29,10 +29,13 @@ export default function MusicPlayer() {
   const [title, setTitle] = useState('');
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [expanded, setExpanded] = useState(true);
   const playerRef = useRef(null);
   const containerRef = useRef(null);
   const intervalRef = useRef(null);
   const hasAutoPlayed = useRef(false);
+  const hideTimer = useRef(null);
+  const autoHideTimer = useRef(null);
 
   /* ── Load YouTube IFrame API ── */
   useEffect(() => {
@@ -108,6 +111,25 @@ export default function MusicPlayer() {
     return () => events.forEach(e => window.removeEventListener(e, tryPlay));
   }, [ready]);
 
+  /* ── Auto-hide after 5s of playing ── */
+  useEffect(() => {
+    if (playing) {
+      autoHideTimer.current = setTimeout(() => setExpanded(false), 5000);
+    } else {
+      clearTimeout(autoHideTimer.current);
+    }
+    return () => clearTimeout(autoHideTimer.current);
+  }, [playing]);
+
+  const onMouseEnter = () => {
+    clearTimeout(hideTimer.current);
+    clearTimeout(autoHideTimer.current);
+    setExpanded(true);
+  };
+  const onMouseLeave = () => {
+    hideTimer.current = setTimeout(() => setExpanded(false), 900);
+  };
+
   const toggle = () => {
     if (!ready || !playerRef.current) return;
     playing ? playerRef.current.pauseVideo() : playerRef.current.playVideo();
@@ -127,70 +149,105 @@ export default function MusicPlayer() {
         <div ref={containerRef} />
       </div>
 
-      {/* ── Unified glass card — fixed bottom-right, above Download CV button ── */}
+      {/* ── Unified — fixed bottom-right, above Download CV button ── */}
       <div
-        className="fixed z-50"
+        className="fixed z-50 flex flex-col items-end"
         style={{ right: 24, bottom: 108 }}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
-        <div style={{ ...glass, width: 164, padding: '10px 12px' }} className="flex flex-col gap-2">
+        <AnimatePresence mode="wait">
+          {expanded ? (
+            /* Full player */
+            <motion.div
+              key="player"
+              style={{ ...glass, width: 164, padding: '10px 12px' }}
+              className="flex flex-col gap-2"
+              initial={{ opacity: 0, y: 6, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 6, scale: 0.97 }}
+              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {/* Title row */}
+              <div className="flex items-center gap-1.5">
+                <motion.span
+                  className="block w-1 h-1 rounded-full flex-shrink-0"
+                  style={{ background: playing ? 'rgba(22,18,14,0.5)' : 'rgba(22,18,14,0.2)' }}
+                  animate={playing ? { opacity: [1, 0.3, 1] } : { opacity: 1 }}
+                  transition={{ duration: 1.4, repeat: playing ? Infinity : 0, ease: 'easeInOut' }}
+                />
+                <AnimatePresence mode="wait">
+                  <motion.p
+                    key={title}
+                    className="text-[8px] tracking-[0.15em] uppercase font-medium text-ink/45 truncate flex-1 min-w-0"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {title || (ready ? '—' : 'Loading…')}
+                  </motion.p>
+                </AnimatePresence>
+              </div>
 
-          {/* Title row */}
-          <div className="flex items-center gap-1.5">
-            <motion.span
-              className="block w-1 h-1 rounded-full flex-shrink-0"
-              style={{ background: playing ? 'rgba(22,18,14,0.5)' : 'rgba(22,18,14,0.2)' }}
-              animate={playing ? { opacity: [1, 0.3, 1] } : { opacity: 1 }}
-              transition={{ duration: 1.4, repeat: playing ? Infinity : 0, ease: 'easeInOut' }}
-            />
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={title}
-                className="text-[8px] tracking-[0.15em] uppercase font-medium text-ink/45 truncate flex-1 min-w-0"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                {title || (ready ? '—' : 'Loading…')}
-              </motion.p>
-            </AnimatePresence>
-          </div>
+              {/* Progress bar */}
+              <div className="w-full rounded-full overflow-hidden" style={{ height: 1, background: 'rgba(22,18,14,0.1)' }}>
+                <div
+                  className="h-full rounded-full"
+                  style={{ width: `${progress}%`, background: 'rgba(22,18,14,0.4)', transition: 'width 0.5s linear' }}
+                />
+              </div>
 
-          {/* Progress bar */}
-          <div className="w-full rounded-full overflow-hidden" style={{ height: 1, background: 'rgba(22,18,14,0.1)' }}>
-            <div
-              className="h-full rounded-full"
-              style={{ width: `${progress}%`, background: 'rgba(22,18,14,0.4)', transition: 'width 0.5s linear' }}
-            />
-          </div>
-
-          {/* Controls + time */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <button onClick={prev} aria-label="Previous" className="cursor-pointer" style={{ color: 'rgba(22,18,14,0.35)', lineHeight: 0 }}>
-                <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z" /></svg>
-              </button>
-              <button
-                onClick={toggle}
-                aria-label={playing ? 'Pause' : 'Play'}
-                className="cursor-pointer flex items-center justify-center rounded-full"
-                style={{ width: 18, height: 18, border: '1px solid rgba(22,18,14,0.22)', color: 'rgba(22,18,14,0.6)', lineHeight: 0 }}
-              >
-                {playing ? (
-                  <svg width="6" height="6" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6zm8-14v14h4V5z" /></svg>
-                ) : (
-                  <svg width="6" height="6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
-                )}
-              </button>
-              <button onClick={next} aria-label="Next" className="cursor-pointer" style={{ color: 'rgba(22,18,14,0.35)', lineHeight: 0 }}>
-                <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6zm2.5 0V6l8.5 6z" /></svg>
-              </button>
-            </div>
-            <span style={{ fontSize: 7, letterSpacing: '0.08em', color: 'rgba(22,18,14,0.28)', fontVariantNumeric: 'tabular-nums', fontWeight: 500 }}>
-              {fmt(currentTime)} / {fmt(duration)}
-            </span>
-          </div>
-        </div>
+              {/* Controls + time */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <button onClick={prev} aria-label="Previous" className="cursor-pointer" style={{ color: 'rgba(22,18,14,0.35)', lineHeight: 0 }}>
+                    <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z" /></svg>
+                  </button>
+                  <button
+                    onClick={toggle}
+                    aria-label={playing ? 'Pause' : 'Play'}
+                    className="cursor-pointer flex items-center justify-center rounded-full"
+                    style={{ width: 18, height: 18, border: '1px solid rgba(22,18,14,0.22)', color: 'rgba(22,18,14,0.6)', lineHeight: 0 }}
+                  >
+                    {playing ? (
+                      <svg width="6" height="6" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6zm8-14v14h4V5z" /></svg>
+                    ) : (
+                      <svg width="6" height="6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+                    )}
+                  </button>
+                  <button onClick={next} aria-label="Next" className="cursor-pointer" style={{ color: 'rgba(22,18,14,0.35)', lineHeight: 0 }}>
+                    <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6zm2.5 0V6l8.5 6z" /></svg>
+                  </button>
+                </div>
+                <span style={{ fontSize: 7, letterSpacing: '0.08em', color: 'rgba(22,18,14,0.28)', fontVariantNumeric: 'tabular-nums', fontWeight: 500 }}>
+                  {fmt(currentTime)} / {fmt(duration)}
+                </span>
+              </div>
+            </motion.div>
+          ) : (
+            /* Collapsed label */
+            <motion.div
+              key="label"
+              className="flex items-center gap-1.5 cursor-default"
+              style={{ ...glass, padding: '6px 10px' }}
+              initial={{ opacity: 0, y: -4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.2 }}
+            >
+              <motion.span
+                className="block w-1 h-1 rounded-full flex-shrink-0"
+                style={{ background: playing ? 'rgba(22,18,14,0.45)' : 'rgba(22,18,14,0.2)' }}
+                animate={playing ? { opacity: [1, 0.2, 1] } : { opacity: 1 }}
+                transition={{ duration: 1.4, repeat: playing ? Infinity : 0, ease: 'easeInOut' }}
+              />
+              <span style={{ fontSize: 8, letterSpacing: '0.2em', color: 'rgba(22,18,14,0.4)', textTransform: 'uppercase', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                {playing ? 'Now Playing' : 'Music Player'}
+              </span>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );
