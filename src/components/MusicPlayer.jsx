@@ -127,16 +127,15 @@ export default function MusicPlayer() {
         <div ref={containerRef} />
       </div>
 
-      {/* ── Desktop glass card — right side ── */}
+      {/* ── Unified glass card — fixed bottom-right, above Download CV button ── */}
       <div
-        className="hidden md:block fixed z-40"
-        style={{ right: 32, top: '60%' }}
+        className="fixed z-50"
+        style={{ right: 24, bottom: 108 }}
       >
         <div style={{ ...glass, width: 164, padding: '10px 12px' }} className="flex flex-col gap-2">
 
           {/* Title row */}
           <div className="flex items-center gap-1.5">
-            {/* Dot indicator */}
             <motion.span
               className="block w-1 h-1 rounded-full flex-shrink-0"
               style={{ background: playing ? 'rgba(22,18,14,0.5)' : 'rgba(22,18,14,0.2)' }}
@@ -158,17 +157,10 @@ export default function MusicPlayer() {
           </div>
 
           {/* Progress bar */}
-          <div
-            className="w-full rounded-full overflow-hidden cursor-pointer"
-            style={{ height: 1, background: 'rgba(22,18,14,0.1)' }}
-          >
+          <div className="w-full rounded-full overflow-hidden" style={{ height: 1, background: 'rgba(22,18,14,0.1)' }}>
             <div
               className="h-full rounded-full"
-              style={{
-                width: `${progress}%`,
-                background: 'rgba(22,18,14,0.4)',
-                transition: 'width 0.5s linear',
-              }}
+              style={{ width: `${progress}%`, background: 'rgba(22,18,14,0.4)', transition: 'width 0.5s linear' }}
             />
           </div>
 
@@ -176,64 +168,30 @@ export default function MusicPlayer() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <button onClick={prev} aria-label="Previous" className="cursor-pointer" style={{ color: 'rgba(22,18,14,0.35)', lineHeight: 0 }}>
-                <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z" />
-                </svg>
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z" /></svg>
               </button>
-
               <button
                 onClick={toggle}
                 aria-label={playing ? 'Pause' : 'Play'}
                 className="cursor-pointer flex items-center justify-center rounded-full"
-                style={{
-                  width: 18, height: 18,
-                  border: '1px solid rgba(22,18,14,0.22)',
-                  color: 'rgba(22,18,14,0.6)',
-                  lineHeight: 0,
-                }}
+                style={{ width: 18, height: 18, border: '1px solid rgba(22,18,14,0.22)', color: 'rgba(22,18,14,0.6)', lineHeight: 0 }}
               >
                 {playing ? (
-                  <svg width="6" height="6" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M6 19h4V5H6zm8-14v14h4V5z" />
-                  </svg>
+                  <svg width="6" height="6" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6zm8-14v14h4V5z" /></svg>
                 ) : (
-                  <svg width="6" height="6" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
+                  <svg width="6" height="6" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
                 )}
               </button>
-
               <button onClick={next} aria-label="Next" className="cursor-pointer" style={{ color: 'rgba(22,18,14,0.35)', lineHeight: 0 }}>
-                <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M6 18l8.5-6L6 6zm2.5 0V6l8.5 6z" />
-                </svg>
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6zm2.5 0V6l8.5 6z" /></svg>
               </button>
             </div>
-
             <span style={{ fontSize: 7, letterSpacing: '0.08em', color: 'rgba(22,18,14,0.28)', fontVariantNumeric: 'tabular-nums', fontWeight: 500 }}>
               {fmt(currentTime)} / {fmt(duration)}
             </span>
           </div>
         </div>
       </div>
-
-      {/* ── Mobile — glass pill bottom-right ── */}
-      <button
-        onClick={toggle}
-        aria-label={playing ? 'Pause music' : 'Play music'}
-        className="md:hidden fixed bottom-6 right-6 z-50 cursor-pointer flex items-center gap-2"
-        style={{ ...glass, padding: '8px 12px' }}
-      >
-        <motion.span
-          className="block w-1 h-1 rounded-full"
-          style={{ background: playing ? 'rgba(22,18,14,0.5)' : 'rgba(22,18,14,0.2)' }}
-          animate={playing ? { opacity: [1, 0.3, 1] } : { opacity: 1 }}
-          transition={{ duration: 1.4, repeat: playing ? Infinity : 0, ease: 'easeInOut' }}
-        />
-        <span style={{ fontSize: 9, letterSpacing: '0.18em', color: 'rgba(22,18,14,0.5)', textTransform: 'uppercase', fontWeight: 600 }}>
-          {playing ? 'Pause' : 'Music'}
-        </span>
-      </button>
     </>
   );
 }
