@@ -34,6 +34,7 @@ export default function MusicPlayer() {
   const containerRef = useRef(null);
   const intervalRef = useRef(null);
   const hasAutoPlayed = useRef(false);
+  const wantsToPlay = useRef(false);
   const hideTimer = useRef(null);
   const autoHideTimer = useRef(null);
 
@@ -99,16 +100,31 @@ export default function MusicPlayer() {
   }, []);
 
   /* ── Auto-play on first user interaction ── */
+  /* Listen immediately on mount — don't wait for ready */
   useEffect(() => {
-    if (!ready || hasAutoPlayed.current) return;
+    const EVENTS = ['click', 'scroll', 'touchstart', 'keydown'];
     const tryPlay = () => {
       if (hasAutoPlayed.current) return;
+      // Remove all listeners the moment any one fires
+      EVENTS.forEach(e => window.removeEventListener(e, tryPlay));
+      if (playerRef.current) {
+        hasAutoPlayed.current = true;
+        playerRef.current.playVideo();
+      } else {
+        // Player not ready yet — flag so we play the instant it is
+        wantsToPlay.current = true;
+      }
+    };
+    EVENTS.forEach(e => window.addEventListener(e, tryPlay, { passive: true }));
+    return () => EVENTS.forEach(e => window.removeEventListener(e, tryPlay));
+  }, []);
+
+  /* If user interacted before player was ready, play now */
+  useEffect(() => {
+    if (ready && wantsToPlay.current && !hasAutoPlayed.current) {
       hasAutoPlayed.current = true;
       playerRef.current?.playVideo();
-    };
-    const events = ['click', 'scroll', 'touchstart', 'keydown'];
-    events.forEach(e => window.addEventListener(e, tryPlay, { once: true, passive: true }));
-    return () => events.forEach(e => window.removeEventListener(e, tryPlay));
+    }
   }, [ready]);
 
   /* ── Auto-hide after 5s of playing ── */
