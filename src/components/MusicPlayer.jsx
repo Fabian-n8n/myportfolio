@@ -33,8 +33,7 @@ export default function MusicPlayer() {
   const playerRef = useRef(null);
   const containerRef = useRef(null);
   const intervalRef = useRef(null);
-  const hasAutoPlayed = useRef(false);
-  const wantsToPlay = useRef(false);
+  const userInteracted = useRef(false);
   const hideTimer = useRef(null);
   const autoHideTimer = useRef(null);
 
@@ -60,6 +59,8 @@ export default function MusicPlayer() {
             setReady(true);
             const d = e.target.getVideoData();
             if (d?.title) setTitle(d.title);
+            // If user already interacted before player loaded, play now
+            if (userInteracted.current) e.target.playVideo();
           },
           onStateChange: (e) => {
             const YT = window.YT.PlayerState;
@@ -100,30 +101,18 @@ export default function MusicPlayer() {
   }, []);
 
   /* ── Auto-play on first user interaction ── */
-  /* Listen immediately on mount — don't wait for ready */
   useEffect(() => {
-    const EVENTS = ['click', 'scroll', 'touchstart', 'pointerdown', 'keydown', 'mousemove'];
-    const tryPlay = () => {
-      if (hasAutoPlayed.current) return;
-      hasAutoPlayed.current = true;
-      if (playerRef.current) {
-        playerRef.current.playVideo();
-      } else {
-        wantsToPlay.current = true;
-      }
+    const EVENTS = ['click', 'scroll', 'touchstart', 'pointerdown', 'keydown'];
+    const onInteraction = () => {
+      if (userInteracted.current) return;
+      userInteracted.current = true;
+      // If player already ready, play immediately
+      if (playerRef.current) playerRef.current.playVideo();
+      // Otherwise onReady will pick up userInteracted and play
     };
-    // Keep all listeners alive — hasAutoPlayed guards against double-play
-    EVENTS.forEach(e => window.addEventListener(e, tryPlay, { passive: true }));
-    return () => EVENTS.forEach(e => window.removeEventListener(e, tryPlay));
+    EVENTS.forEach(e => window.addEventListener(e, onInteraction, { passive: true }));
+    return () => EVENTS.forEach(e => window.removeEventListener(e, onInteraction));
   }, []);
-
-  /* If user interacted before player was ready, play now */
-  useEffect(() => {
-    if (ready && wantsToPlay.current && !hasAutoPlayed.current) {
-      hasAutoPlayed.current = true;
-      playerRef.current?.playVideo();
-    }
-  }, [ready]);
 
   /* ── Auto-hide after 5s of playing ── */
   useEffect(() => {
