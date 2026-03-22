@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
 /* ─── Per-letter: mount-in + scroll-out ─────────────────── */
@@ -40,6 +40,14 @@ function FadeUp({ children, delay = 0, className = '' }) {
 
 export default function Hero() {
   const sectionRef = useRef(null);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid) return;
+    vid.muted = true;
+    vid.play().catch(() => {});
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -66,7 +74,10 @@ export default function Hero() {
           style={{ scale: videoScale, opacity: videoOpacity }}
         >
           <video
+            ref={videoRef}
             autoPlay muted loop playsInline
+            disablePictureInPicture
+            x-webkit-airplay="deny"
             src="/hero-portrait-10s.mp4"
             className="absolute inset-0 w-full h-full"
             style={{ objectFit: 'cover', objectPosition: '58% center' }}
