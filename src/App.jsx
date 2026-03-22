@@ -8,6 +8,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import AboutPage from './pages/AboutPage';
 import ProjectPage from './pages/ProjectPage';
+import MusicPlayer from './components/MusicPlayer';
 
 /* Scroll to top on every route change */
 function ScrollToTop() {
@@ -35,6 +36,7 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Navbar />
+      <MusicPlayer />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
