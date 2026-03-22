@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Work from './components/Work';
@@ -42,6 +43,7 @@ export default function App() {
           <Route path="/work/:slug" element={<ProjectPage />} />
         </Routes>
       </main>
+      <Analytics />
     </BrowserRouter>
   );
 }
