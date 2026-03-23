@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const EMAIL = 'uifabiannn@gmail.com';
 
 const LINKS = [
+  { label: 'GitHub', href: 'https://github.com/Fabian-n8n' },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/fabian-wong/' },
   { label: 'TikTok', href: 'https://www.tiktok.com/@fabian.n8n' },
 ];
