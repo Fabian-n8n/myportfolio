@@ -152,20 +152,14 @@ export default function Hero() {
             </span>
           </h1>
 
-          {/* Bottom row — mount + scroll fade together */}
+          {/* Bottom row — CTAs left-aligned */}
           <motion.div
-            className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-0"
+            className="flex items-center gap-2 sm:gap-3"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
             style={{ opacity: uiOpacity, y: uiY }}
           >
-            <div className="hidden sm:flex items-center gap-7">
-              {['Building 0→1 products', 'AI-powered workflows', 'Open to Opportunities'].map((t) => (
-                <span key={t} className="text-[10px] tracking-[0.25em] uppercase text-ink/45 font-medium">{t}</span>
-              ))}
-            </div>
-            <div className="flex items-center gap-2 sm:gap-3">
               <button
                 data-cal-link="fabian-wong/quick-chat"
                 data-cal-namespace="quick-chat"
@@ -181,7 +175,6 @@ export default function Hero() {
               >
                 Download CV <span className="text-ink/50 text-[11px]">↓</span>
               </a>
-            </div>
           </motion.div>
         </div>
 

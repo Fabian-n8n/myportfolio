@@ -155,7 +155,7 @@ export default function MusicPlayer() {
       {/* ── Unified — fixed bottom-right, above Download CV button ── */}
       <div
         className="fixed z-50 flex flex-col items-end"
-        style={{ right: 24, bottom: 108 }}
+        style={{ right: 24, bottom: 32 }}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
