@@ -100,7 +100,32 @@ export default function Hero() {
         {/* ── Content ─────────────────────────────────── */}
         <div className="absolute inset-0 z-20 flex flex-col justify-end pb-8 md:pb-12 px-6 md:px-10">
 
-          {/* Name label — small, mounts first */}
+          {/* CTAs — above name label */}
+          <motion.div
+            className="flex items-center gap-2 sm:gap-3 mb-6"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            style={{ opacity: uiOpacity, y: uiY }}
+          >
+            <button
+              data-cal-link="fabian-wong/quick-chat"
+              data-cal-namespace="quick-chat"
+              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+              className="bg-ink text-cream px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink/75 transition-colors cursor-pointer"
+            >
+              Let's Talk
+            </button>
+            <a
+              href="/fabian-wong-resume.pdf"
+              download="Fabian Wong - Resume - PD updated.pdf"
+              className="inline-flex items-center gap-2 border border-ink/30 text-ink px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:border-ink transition-colors"
+            >
+              Download CV <span className="text-ink/50 text-[11px]">↓</span>
+            </a>
+          </motion.div>
+
+          {/* Name label */}
           <motion.div
             className="mb-5"
             initial={{ opacity: 0, y: 18 }}
@@ -125,7 +150,7 @@ export default function Hero() {
               fontSize: 'clamp(44px, 8vw, 112px)',
               letterSpacing: '-0.04em',
               lineHeight: 0.88,
-              marginBottom: '1.75rem',
+              marginBottom: 0,
             }}
           >
             {/* PRODUCT DESIGNER */}
@@ -151,31 +176,6 @@ export default function Hero() {
               ))}
             </span>
           </h1>
-
-          {/* Bottom row — CTAs left-aligned */}
-          <motion.div
-            className="flex items-center gap-2 sm:gap-3"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            style={{ opacity: uiOpacity, y: uiY }}
-          >
-              <button
-                data-cal-link="fabian-wong/quick-chat"
-                data-cal-namespace="quick-chat"
-                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
-                className="bg-ink text-cream px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink/75 transition-colors cursor-pointer"
-              >
-                Let's Talk
-              </button>
-              <a
-                href="/fabian-wong-resume.pdf"
-                download="Fabian Wong - Resume - PD updated.pdf"
-                className="inline-flex items-center gap-2 border border-ink/30 text-ink px-7 py-3.5 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:border-ink transition-colors"
-              >
-                Download CV <span className="text-ink/50 text-[11px]">↓</span>
-              </a>
-          </motion.div>
         </div>
 
         {/* ── Right editorial annotations ─────────────── */}
