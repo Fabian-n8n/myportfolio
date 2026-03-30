@@ -9,7 +9,7 @@ const PROJECTS = [
     description:
       "Built Singapore's HR SaaS from 0 to 1 — concept, UX, frontend, and go-to-market. Covers CPF automation, payroll, and employee onboarding for local SMEs.",
     metrics: ['$10K MRR', '5+ B2B Customers', '0 → 1 Build'],
-    tags: ['Figma', 'React', 'NeonDB', 'Clerk', 'Railway'],
+    tags: ['Figma', 'NextJS', 'NeonDB', 'Clerk', 'Railway', 'Vite', 'ShadcnUI'],
     status: 'kelick.io →',
     href: 'https://kelick.io',
   },
