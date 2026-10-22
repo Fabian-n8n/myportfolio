@@ -10,8 +10,8 @@ const PROJECTS = [
       "Contracting with PSYKHE, a product design and UX research consultancy, on DBS projects. Shipped two mortgage lending modules, now on bancassurance. I also run the team's Claude training and build our internal AI tools.",
     metrics: ['Sign-off in 3 Months', '2 Screens → 1', '3-Session AI Programme'],
     tags: ['Figma', 'Design Systems', 'UX Research', 'Claude Code', 'Vercel'],
-    status: 'Case studies ↓',
-    href: '#projects',
+    status: 'Current',
+    href: null,
   },
   {
     num: '02',
