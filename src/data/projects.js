@@ -26,7 +26,7 @@ export const PROJECTS_DATA = [
     downloads: [
       { label: 'Process deck (PDF)', href: '/case-studies/genz-fi-process.pdf', file: 'Fabian Wong - Gen Z FI Concept - Process.pdf' },
     ],
-    coverImg: '/project-covers/genz-fi.webp',
+    coverImg: '/project-covers/genz-fi-v2.webp',
     accentColor: '#2A0D0D',
   },
   {
