@@ -4,13 +4,14 @@ const PROJECTS = [
   {
     num: '01',
     name: 'PSYKHE',
-    type: 'Product Design Consultant · UX Research',
+    type: 'Vibe Engineering · Product Design Consultant · UX Research',
     year: 'May 2026 - Now',
     description:
       "Contracting with PSYKHE, a product design and UX research consultancy, on DBS projects. Shipped two mortgage lending modules, now on bancassurance. I also run the team's Claude training and build our internal AI tools.",
     metrics: ['Sign-off in 3 Months', '2 Screens → 1', '3-Session AI Programme'],
     tags: ['Figma', 'Design Systems', 'UX Research', 'Claude Code', 'Vercel'],
     status: 'Current',
+    current: true,
     href: null,
   },
   {
@@ -22,8 +23,8 @@ const PROJECTS = [
       "Founded Nodemation, a Singapore-registered AI automation agency. We automate what's stealing your time. Builds n8n workflows, LLM integrations, and voice AI agents for SMEs.",
     metrics: ['n8n Workflows', 'LLM Integrations', 'Voice AI Agents'],
     tags: ['n8n', 'Claude', 'Retell AI', 'Airtable', 'Twilio', 'OpenRouter'],
-    status: 'nodemation.pro →',
-    href: 'https://www.nodemation.pro',
+    status: null,
+    href: null,
   },
   {
     num: '03',
@@ -62,6 +63,16 @@ const PROJECTS = [
     href: null,
   },
 ];
+
+/* Live indicator for the role I'm in now */
+function CurrentDot() {
+  return (
+    <span className="relative inline-flex w-1.5 h-1.5 mr-2 align-middle -translate-y-px">
+      <span className="absolute inset-0 rounded-full bg-emerald-500 opacity-60 motion-safe:animate-ping" />
+      <span className="relative w-1.5 h-1.5 rounded-full bg-emerald-500" />
+    </span>
+  );
+}
 
 function ProjectRow({ project, index }) {
   return (
@@ -104,6 +115,11 @@ function ProjectRow({ project, index }) {
               {project.status}
             </span>
           )}
+          {project.current && (
+            <span className="text-[11px] tracking-[0.2em] uppercase font-semibold text-ink/70">
+              <CurrentDot />{project.status}
+            </span>
+          )}
         </div>
 
         {/* Desktop layout */}
@@ -138,8 +154,8 @@ function ProjectRow({ project, index }) {
 
           <div className="col-span-2 flex flex-col items-end justify-between">
             <span className="text-[11px] tracking-[0.18em] uppercase text-ink/35 font-medium text-right">{project.year}</span>
-            <span className={`text-[11px] tracking-[0.2em] uppercase font-semibold ${project.href ? 'text-ink underline underline-offset-4 decoration-ink/25' : 'text-ink/28'}`}>
-              {project.status}
+            <span className={`text-[11px] tracking-[0.2em] uppercase font-semibold ${project.href ? 'text-ink underline underline-offset-4 decoration-ink/25' : project.current ? 'text-ink/70' : 'text-ink/28'}`}>
+              {project.current && <CurrentDot />}{project.status}
             </span>
           </div>
         </div>

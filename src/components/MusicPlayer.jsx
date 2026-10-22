@@ -31,6 +31,8 @@ export default function MusicPlayer() {
   const containerRef = useRef(null);
   const intervalRef = useRef(null);
   const userInteracted = useRef(false);
+  const started = useRef(false);
+  const lastTry = useRef(0);
   const hideTimer = useRef(null);
   const autoHideTimer = useRef(null);
 
@@ -62,6 +64,7 @@ export default function MusicPlayer() {
           onStateChange: (e) => {
             const YT = window.YT.PlayerState;
             const isPlaying = e.data === YT.PLAYING;
+            if (isPlaying) started.current = true;
             setPlaying(isPlaying);
             const data = playerRef.current?.getVideoData();
             if (data?.title) setTitle(data.title);
@@ -97,15 +100,20 @@ export default function MusicPlayer() {
     };
   }, []);
 
-  /* ── Auto-play on first user interaction ── */
+  /* ── Auto-play on user interaction ──
+     Browsers only allow sound after a click, tap or key press, so a scroll
+     alone is usually blocked. Keep retrying on each interaction until the
+     song has actually started once, then stop (so a manual pause sticks). */
   useEffect(() => {
-    const EVENTS = ['click', 'scroll', 'touchstart', 'pointerdown', 'keydown'];
-    const onInteraction = () => {
-      if (userInteracted.current) return;
+    const EVENTS = ['click', 'scroll', 'touchend', 'pointerdown', 'keydown'];
+    const onInteraction = (e) => {
+      if (started.current) return;
       userInteracted.current = true;
-      // If player already ready, play immediately
-      if (playerRef.current) playerRef.current.playVideo();
-      // Otherwise onReady will pick up userInteracted and play
+      const now = Date.now();
+      if (e.type === 'scroll' && now - lastTry.current < 500) return; // scroll fires constantly
+      lastTry.current = now;
+      // If player already ready, play now; otherwise onReady picks up userInteracted
+      playerRef.current?.playVideo?.();
     };
     EVENTS.forEach(e => window.addEventListener(e, onInteraction, { passive: true }));
     return () => EVENTS.forEach(e => window.removeEventListener(e, onInteraction));
