@@ -105,20 +105,31 @@ export default function ProjectPage() {
       <section className="px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-24 border-b border-ink/8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           <motion.div {...fadeInUp()} className="md:col-span-7">
-            <p className="text-[11px] tracking-[0.3em] uppercase text-ink/35 font-medium mb-8">Overview</p>
+            <p className="text-[11px] tracking-[0.3em] uppercase text-ink/35 font-medium mb-8">{project.problem ? 'Problem' : 'Overview'}</p>
             <p className="text-ink/70 leading-relaxed" style={{ fontSize: '17px', lineHeight: 1.85 }}>
-              {project.description}
+              {project.problem || project.description}
             </p>
           </motion.div>
           <motion.div {...fadeInUp(0.1)} className="md:col-span-5 md:pl-8">
-            <p className="text-[11px] tracking-[0.3em] uppercase text-ink/35 font-medium mb-8">Stack</p>
-            <div className="flex flex-wrap gap-2">
-              {project.tags.map((t) => (
-                <span key={t} className="border border-ink/15 text-ink/60 rounded-full px-3 py-1.5 text-[11px] tracking-[0.12em] font-medium">
-                  {t}
-                </span>
-              ))}
-            </div>
+            {project.outcome ? (
+              <>
+                <p className="text-[11px] tracking-[0.3em] uppercase text-ink/35 font-medium mb-8">Outcome</p>
+                <p className="text-ink/70 leading-relaxed" style={{ fontSize: '17px', lineHeight: 1.85 }}>
+                  {project.outcome}
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-[11px] tracking-[0.3em] uppercase text-ink/35 font-medium mb-8">Stack</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((t) => (
+                    <span key={t} className="border border-ink/15 text-ink/60 rounded-full px-3 py-1.5 text-[11px] tracking-[0.12em] font-medium">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </>
+            )}
           </motion.div>
         </div>
       </section>
@@ -126,7 +137,7 @@ export default function ProjectPage() {
       {/* ── Key Contributions ─────────────────────────────── */}
       <section className="px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-24 border-b border-ink/8">
         <motion.p {...fadeInUp()} className="text-[11px] tracking-[0.3em] uppercase text-ink/35 font-medium mb-14">
-          Key Contributions
+          {project.outcome ? 'Process' : 'Key Contributions'}
         </motion.p>
         <div className="space-y-0">
           {project.contributions.map((item, i) => (
@@ -141,6 +152,22 @@ export default function ProjectPage() {
         </div>
       </section>
 
+      {/* ── Tools (problem-led case studies list tools last) ── */}
+      {project.outcome && (
+        <section className="px-6 md:px-10 pt-16 md:pt-24 pb-16 md:pb-24 border-b border-ink/8">
+          <motion.div {...fadeInUp()}>
+            <p className="text-[11px] tracking-[0.3em] uppercase text-ink/35 font-medium mb-8">Tools</p>
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map((t) => (
+                <span key={t} className="border border-ink/15 text-ink/60 rounded-full px-3 py-1.5 text-[11px] tracking-[0.12em] font-medium">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+      )}
+
       {/* ── CTA ───────────────────────────────────────────── */}
       <section className="px-6 md:px-10 pt-16 md:pt-20 pb-16 md:pb-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
         <motion.div {...fadeInUp()}>
@@ -151,7 +178,7 @@ export default function ProjectPage() {
             </a>
           ) : (
             <span className="inline-flex items-center gap-3 border border-ink/20 text-ink/40 px-8 py-4 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold">
-              Project Complete
+              {project.status || 'Project Complete'}
             </span>
           )}
         </motion.div>

@@ -3,21 +3,45 @@ import { motion } from 'framer-motion';
 const PROJECTS = [
   {
     num: '01',
+    name: 'PSYKHE',
+    type: 'Product Design Consultant · UX Research',
+    year: 'May 2026 - Now',
+    description:
+      "Contracting with PSYKHE, a product design and UX research consultancy, on DBS projects. Shipped two mortgage lending modules, now on bancassurance. I also run the team's Claude training and build our internal AI tools.",
+    metrics: ['Sign-off in 3 Months', '2 Screens → 1', '3-Session AI Programme'],
+    tags: ['Figma', 'Design Systems', 'UX Research', 'Claude Code', 'Vercel'],
+    status: 'Case studies ↓',
+    href: '#projects',
+  },
+  {
+    num: '02',
+    name: 'Nodemation',
+    type: 'AI Engineering · Agency',
+    year: 'Oct 2025 - Now',
+    description:
+      "Founded Nodemation, a Singapore-registered AI automation agency. We automate what's stealing your time. Builds n8n workflows, LLM integrations, and voice AI agents for SMEs.",
+    metrics: ['n8n Workflows', 'LLM Integrations', 'Voice AI Agents'],
+    tags: ['n8n', 'Claude', 'Retell AI', 'Airtable', 'Twilio', 'OpenRouter'],
+    status: 'nodemation.pro →',
+    href: 'https://www.nodemation.pro',
+  },
+  {
+    num: '03',
     name: 'Kelick',
     type: 'Product Design · Product Management',
-    year: 'Sep 2024 — Oct 2025',
+    year: 'Sep 2024 - Oct 2025',
     description:
-      "Built Singapore's HR SaaS from 0 to 1 — concept, UX, frontend, and go-to-market. Covers CPF automation, payroll, and employee onboarding for local SMEs.",
+      "Built Singapore's HR SaaS from 0 to 1: concept, UX, frontend, and go-to-market. Covers CPF automation, payroll, and employee onboarding for local SMEs.",
     metrics: ['$10K MRR', '5+ B2B Customers', '0 → 1 Build'],
     tags: ['Figma', 'NextJS', 'NeonDB', 'Clerk', 'Railway', 'Vite', 'ShadcnUI'],
     status: 'kelick.io →',
     href: 'https://kelick.io',
   },
   {
-    num: '02',
+    num: '04',
     name: 'ION Mobility',
     type: 'UI/UX Design · Research',
-    year: 'Apr — Oct 2023',
+    year: 'Apr - Oct 2023',
     description:
       "UX research and design system for Indonesia's leading EV motorcycle brand. Customer journey mapping at BSD and mobile app API framework proposals.",
     metrics: ['Design System', 'Customer Research', 'Mobile UX'],
@@ -26,16 +50,16 @@ const PROJECTS = [
     href: null,
   },
   {
-    num: '03',
-    name: 'Nodemation',
-    type: 'AI Engineering · Agency',
-    year: 'Oct 2025 — Now',
+    num: '05',
+    name: 'Aureus Group',
+    type: 'UI/UX Design',
+    year: 'Feb 2022 - Apr 2023',
     description:
-      "Founded Nodemation — a Singapore-registered AI automation agency. We Automate What's Stealing Your Time. Builds n8n workflows, LLM integrations, and voice AI agents for SMEs.",
-    metrics: ['n8n Workflows', 'LLM Integrations', 'Voice AI Agents'],
-    tags: ['n8n', 'Claude', 'Retell AI', 'Airtable', 'Twilio', 'OpenRouter'],
-    status: 'nodemation.pro →',
-    href: 'https://www.nodemation.pro',
+      'Product research and user stories for a new product release. Designed the feature logic end to end and checked it against real user needs before it went to engineering.',
+    metrics: ['User Stories', 'Product Research', 'Feature Logic'],
+    tags: ['Figma', 'UX Research', 'User Stories'],
+    status: 'Completed',
+    href: null,
   },
 ];
 
@@ -50,8 +74,8 @@ function ProjectRow({ project, index }) {
       <div className="w-full h-px bg-ink/10" />
       <motion.a
         href={project.href || undefined}
-        target={project.href ? '_blank' : undefined}
-        rel={project.href ? 'noopener noreferrer' : undefined}
+        target={project.href?.startsWith('http') ? '_blank' : undefined}
+        rel={project.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
         className={`py-8 md:py-12 block ${project.href ? 'cursor-pointer' : 'cursor-default'}`}
         whileHover={project.href ? { x: 4 } : {}}
         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}

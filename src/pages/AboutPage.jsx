@@ -214,10 +214,16 @@ const TIMELINE = [
     tag: '0 → 1 · $10K MRR',
   },
   {
-    year: '2025+',
+    year: '2025',
     era: 'Founder & AI Engineer',
-    desc: 'Founded Nodemation — a Singapore-registered AI automation agency. Builds n8n workflows, LLM integrations, and voice AI agents that make SMEs run leaner. Growing @fabian.n8n.',
+    desc: 'Founded Nodemation, a Singapore-registered AI automation agency. Builds n8n workflows, LLM integrations, and voice AI agents that make SMEs run leaner. Growing @fabian.n8n.',
     tag: 'Nodemation · n8n · Voice AI',
+  },
+  {
+    year: '2026',
+    era: 'Designer Who Builds',
+    desc: "Joined PSYKHE as a product design consultant on DBS projects: mortgage lending, bancassurance and a Gen Z concept. Also run the team's Claude training and build our internal AI tools.",
+    tag: 'PSYKHE · DBS · Claude',
   },
 ];
 

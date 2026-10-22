@@ -11,27 +11,33 @@ const SKILLS = [
 
 const EXPERIENCE = [
   {
+    company: 'PSYKHE',
+    role: 'Product Design Consultant',
+    period: 'May 2026 - Now',
+    desc: "Contracting on DBS projects. Took two mortgage lending modules to sign-off in 3 months, now on bancassurance. Also run the team's Claude training.",
+  },
+  {
     company: 'Nodemation',
     role: 'Founder & AI Engineer',
-    period: 'Oct 2025 — Now',
-    desc: 'Founded Nodemation — Singapore-registered AI automation agency. Builds n8n workflows, LLM integrations, and voice AI agents for SMEs. Content at @fabian.n8n.',
+    period: 'Oct 2025 - Now',
+    desc: 'Founded Nodemation, a Singapore-registered AI automation agency. Builds n8n workflows, LLM integrations, and voice AI agents for SMEs. Content at @fabian.n8n.',
   },
   {
     company: 'Kelick',
     role: 'Product Designer & Manager',
-    period: 'Sep 2024 — Oct 2025',
+    period: 'Sep 2024 - Oct 2025',
     desc: 'Led 0→1 product build for Singapore HR SaaS. Designed UI/UX, managed engineering, onboarded 5+ B2B customers. Generated $10K MRR.',
   },
   {
     company: 'ION Mobility',
     role: 'UI/UX Designer / Researcher',
-    period: 'Apr 2023 — Oct 2023',
+    period: 'Apr 2023 - Oct 2023',
     desc: "UX research and design system implementation for Indonesia's EV motorcycle brand. API framework proposals for mobile app.",
   },
   {
     company: 'Aureus Group',
     role: 'UI/UX Designer',
-    period: 'Feb 2022 — Apr 2023',
+    period: 'Feb 2022 - Apr 2023',
     desc: 'Product research, user story development, and feature logic across customer-facing SaaS products.',
   },
 ];
@@ -59,23 +65,21 @@ export default function About() {
         {/* Bio */}
         <motion.div {...fadeInUp(0.1)} className="md:col-span-5">
           <p className="text-ink/75 leading-relaxed mb-5" style={{ fontSize: '17px', lineHeight: 1.8 }}>
-            Product Designer and AI Automation Engineer who builds products end-to-end.
-            I think in systems, not just screens — from user research and UI design to
-            shipping features and automating workflows.
+            Product designer and AI automation builder in Singapore. I own work end to end,
+            from user research and UI to shipping the build and automating the boring parts.
+            Mostly self-taught across design, product and engineering.
           </p>
           <p className="text-ink/50 leading-relaxed" style={{ fontSize: '15px', lineHeight: 1.8 }}>
             Previously built{' '}
             <a href="https://kelick.io" target="_blank" rel="noopener noreferrer"
               className="text-ink underline underline-offset-4 decoration-ink/25 hover:decoration-ink transition-all">
               Kelick
-            </a>{' '}
-            — an HR SaaS for Singapore SMEs — from concept to $10K MRR as sole designer and PM.
-            Now focused on freelance AI automation, building{' '}
+            </a>, an HR SaaS for Singapore SMEs, from concept to $10K MRR as sole designer and PM.
+            Now contracting with PSYKHE on DBS projects, and still building AI workflows at{' '}
             <a href="https://www.tiktok.com/@fabian.n8n" target="_blank" rel="noopener noreferrer"
               className="text-ink underline underline-offset-4 decoration-ink/25 hover:decoration-ink transition-all">
               @fabian.n8n
-            </a>{' '}
-            and shipping AI-powered workflows for clients.
+            </a>.
           </p>
 
           <div className="mt-10 pt-8 border-t border-ink/10 space-y-4">
