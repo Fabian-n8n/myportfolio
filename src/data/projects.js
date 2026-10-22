@@ -1,7 +1,37 @@
 export const PROJECTS_DATA = [
   {
-    slug: 'craftbit-pro',
+    slug: 'gen-z-fi-concept',
     num: '01',
+    name: 'Gen Z FI Concept',
+    type: 'UX Research · Product Design',
+    year: '2026',
+    tagline: 'A payday savings lock and auto-categorisation for Gen Z, taken from 7 interviews to a live prototype tested with real users.',
+    description:
+      "A solo concept project I ran with PSYKHE for a major bank, from April to August. PSYKHE's research found that 44% of Singapore Gen Z are \"trying to be good\" with money: they want to save, but it falls apart in specific moments. My job was to show what a fix could look like inside the banking app they already use, built far enough to test with real people, not just describe. I owned it end to end: research, synthesis, prototyping, usability testing and the pitch.",
+    contributions: [
+      'Recruited through my own TikTok after LinkedIn, Instagram and Telegram all stalled. Screened people with a 2-minute survey, and a dry run changed my questions from "would you" to "walk me through the last time".',
+      'Ran 7 interviews against 5 hypotheses. After each session, Claude graded my transcript and pointed out where I led the witness, so the next one ran sharper.',
+      'Landed on the key insight: target the moment, not the identity. Nobody is a bad saver all the time. They slip on payday, at a midnight TikTok ad, at drinks after dinner. Design for the moment and one feature serves everyone.',
+      'Scored every feature idea on a Kano model. Auto-categorisation came up in 7 of 7 interviews and payday interception was strong in 5, so those became the MVP. Social accountability moved to V2.',
+      'Mapped the flows and sketched every state before going high fidelity, including the awkward ones. Turning the lock off takes effect tomorrow, not instantly, because the friction is the point.',
+      'Tested Figma Make, Google Stitch and Claude Design on the same brand file and sketches. Claude Design held the brand best, so I skipped the Figma prototype and built a working app with Claude Code, deployed on Vercel.',
+      'Ran 4 moderated usability sessions without ever saying the feature names. Auto-categorisation had zero comprehension failures. The lock override was too easy, and all 4 people flagged it. The person who overspent most in his interview called himself disciplined and said a lock would make him quit, which backed up designing for moments.',
+      'Shipped two fixes straight from testing: goal-linked framing on the lock ("unlocking pushes your Watches goal to Feb 2027", with Keep it locked as the default), and search and filter on transactions. Then pitched it, asking for a funded pilot of Smart Categorisation.',
+    ],
+    metrics: ['7 User Interviews', '4 Usability Tests', 'Live Coded Prototype'],
+    tags: ['Claude Design', 'Claude Code', 'Next.js', 'Vercel', 'FigJam', 'Kano Model', 'Usability Testing'],
+    externalHref: 'https://genz-fi-dbs.vercel.app/',
+    externalLabel: 'Try the prototype',
+    externalNote: 'Passcode 0000 · best on your phone',
+    downloads: [
+      { label: 'Process deck (PDF)', href: '/case-studies/genz-fi-process.pdf', file: 'Fabian Wong - Gen Z FI Concept - Process.pdf' },
+    ],
+    coverImg: '/project-covers/genz-fi.webp',
+    accentColor: '#2A0D0D',
+  },
+  {
+    slug: 'craftbit-pro',
+    num: '02',
     name: 'Craftbit Pro',
     type: 'UI/UX Design · Design Systems',
     year: '2023',
@@ -23,7 +53,7 @@ export const PROJECTS_DATA = [
   },
   {
     slug: 'uppsala-security',
-    num: '02',
+    num: '03',
     name: 'Uppsala Security',
     type: 'UI/UX Design · Cybersecurity',
     year: '2022',
@@ -45,7 +75,7 @@ export const PROJECTS_DATA = [
   },
   {
     slug: 'velaura',
-    num: '03',
+    num: '04',
     name: 'Velaura',
     type: 'Web Design · Branding',
     year: '2025',

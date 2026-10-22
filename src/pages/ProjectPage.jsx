@@ -145,10 +145,21 @@ export default function ProjectPage() {
       <section className="px-6 md:px-10 pt-16 md:pt-20 pb-16 md:pb-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
         <motion.div {...fadeInUp()}>
           {project.externalHref ? (
-            <a href={project.externalHref} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-ink text-cream px-8 py-4 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink/75 transition-colors">
-              Visit {project.name} →
-            </a>
+            <div className="flex flex-wrap items-center gap-3">
+              <a href={project.externalHref} target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-ink text-cream px-8 py-4 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:bg-ink/75 transition-colors">
+                {project.externalLabel || `Visit ${project.name}`} →
+              </a>
+              {project.downloads?.map((d) => (
+                <a key={d.href} href={d.href} download={d.file}
+                  className="inline-flex items-center gap-2 border border-ink/30 text-ink px-7 py-4 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold hover:border-ink transition-colors">
+                  {d.label} <span className="text-ink/50">↓</span>
+                </a>
+              ))}
+              {project.externalNote && (
+                <p className="w-full text-[11px] tracking-[0.18em] uppercase text-ink/40 font-medium">{project.externalNote}</p>
+              )}
+            </div>
           ) : (
             <span className="inline-flex items-center gap-3 border border-ink/20 text-ink/40 px-8 py-4 rounded-full text-[11px] tracking-[0.22em] uppercase font-semibold">
               Project Complete
