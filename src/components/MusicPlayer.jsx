@@ -2,10 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const PLAYLIST_IDS = [
-  'j61QtWB1zj0',
-  'dyzoRZY5MEg',
-  '9-Bg2smOmPk',
-  'MHCsrKA9gh8',
+  'gFx-NjTw3sM',
 ];
 
 function fmt(s) {

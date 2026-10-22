@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
 /* Hero media. Set to null to go back to the original video. */
-const HERO_PHOTO = '/hero-portrait.jpg';
+const HERO_PHOTO = '/hero-portrait.webp';
 
 /* ─── Per-letter: mount-in + scroll-out ─────────────────── */
 function AnimLetter({ ch, mountDelay, scrollYProgress, scrollStart }) {
@@ -81,9 +81,9 @@ export default function Hero() {
               src={HERO_PHOTO}
               alt="Fabian Wong"
               fetchpriority="high"
-              /* Desktop: sit right like the video's subject, feather the left edge */
-              className="absolute inset-y-0 right-0 w-full md:w-[70%] h-full md:[mask-image:linear-gradient(to_right,transparent,black_35%)]"
-              style={{ objectFit: 'cover', objectPosition: '50% 30%' }}
+              /* Desktop: sit right like the video's subject, drop below the navbar, feather the left edge */
+              className="absolute bottom-0 right-0 w-full h-full md:w-[70%] md:h-[88%] md:[mask-image:linear-gradient(to_right,transparent,black_35%)]"
+              style={{ objectFit: 'cover', objectPosition: '50% 0%' }}
             />
           ) : (
             <video
