@@ -1,6 +1,9 @@
 import { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
+/* Hero media. Set to null to go back to the original video. */
+const HERO_PHOTO = '/hero-portrait.jpg';
+
 /* ─── Per-letter: mount-in + scroll-out ─────────────────── */
 function AnimLetter({ ch, mountDelay, scrollYProgress, scrollStart }) {
   /* Each letter fades out at its own scroll threshold */
@@ -73,15 +76,26 @@ export default function Hero() {
           className="absolute inset-0 will-change-transform"
           style={{ scale: videoScale, opacity: videoOpacity }}
         >
-          <video
-            ref={videoRef}
-            autoPlay muted loop playsInline
-            disablePictureInPicture
-            x-webkit-airplay="deny"
-            src="/hero-portrait-10s.mp4"
-            className="absolute inset-0 w-full h-full"
-            style={{ objectFit: 'cover', objectPosition: '58% center' }}
-          />
+          {HERO_PHOTO ? (
+            <img
+              src={HERO_PHOTO}
+              alt="Fabian Wong"
+              fetchpriority="high"
+              /* Desktop: sit right like the video's subject, feather the left edge */
+              className="absolute inset-y-0 right-0 w-full md:w-[70%] h-full md:[mask-image:linear-gradient(to_right,transparent,black_35%)]"
+              style={{ objectFit: 'cover', objectPosition: '50% 30%' }}
+            />
+          ) : (
+            <video
+              ref={videoRef}
+              autoPlay muted loop playsInline
+              disablePictureInPicture
+              x-webkit-airplay="deny"
+              src="/hero-portrait-10s.mp4"
+              className="absolute inset-0 w-full h-full"
+              style={{ objectFit: 'cover', objectPosition: '58% center' }}
+            />
+          )}
         </motion.div>
 
         {/* ── Gradient blends ─────────────────────────── */}
